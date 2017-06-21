@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - 基本表单</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link href="__static__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="__static__/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__static__/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__static__/css/animate.min.css" rel="stylesheet">
+
+    <link href="__static__/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="__static__/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="__static__/css/style.min.css?v=4.0.0" rel="stylesheet">
+
+    <link href="__static__/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="__static__/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>添加新商品 <small>添加新的商品</small></h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" class="form-horizontal" id="product-form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品分类</label>
+                            <div class="col-sm-3">
+                                <select id="category" class="form-control m-b" name="category_id">
+                                    <option>女包</option>
+                                    <option>男包</option>
+                                    <option>女鞋</option>
+                                    <option>男鞋</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品名称</label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control"  name="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">原价</label>
+                            <div class="col-sm-3">
+                                <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                    <input type="text" class="form-control" name="original_price"> <span class="input-group-addon">.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">折扣价</label>
+
+                            <div class="col-sm-3">
+                                <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                    <input type="text" class="form-control" name="deducted_price"> <span class="input-group-addon">.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品数量</label>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="count">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">缩略图</label>
+                            <div class="col-sm-10">
+                                <!--<input type="text" class="form-control">-->
+                                <div id="mydropzone" class="dropzone"></div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品简介</label>
+
+                            <div class="col-sm-6">
+                                <textarea class="form-control" rows="3" cols="10" name="small_text"></textarea>
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品详情</label>
+
+                            <div class="col-sm-10">
+                                <button id="edit-btn" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">编辑</button>
+                                <button id="save-btn" class="btn btn-primary  btn-xs" onclick="save()" type="button">保存</button>
+                                <div id="eg">
+                                    <div class="click2edit wrapper" id="product-description">
+                                        <h3>你好，子涵 </h3>
+                                        <p>H+是一个完全响应式，基于Bootstrap3.3.5最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的就jQuery插件，她可以用于所有的Web应用程序，如<b>网站管理后台</b>，<b>网站会员中心</b>，<b>CMS</b>，<b>CRM</b>，<b>OA</b>等等，当然，您也可以对她进行深度定制，以做出更强系统。</p>
+                                        <p>
+                                            <b>当前版本：</b>v4.0.0
+                                        </p>
+                                        <p>
+                                            <b>定价：</b><span class="label label-warning">¥988（不开发票）</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="button" onclick="saveProduct();">保存内容</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__static__/js/jquery.min.js?v=2.1.4"></script>
+<script src="__static__/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__static__/js/content.min.js?v=1.0.0"></script>
+<script src="__static__/js/plugins/iCheck/icheck.min.js"></script>
+<script src="__static__/js/plugins/dropzone/dropzone.js"></script>
+<script src="__static__/js/plugins/summernote/summernote.min.js"></script>
+<script src="__static__/js/plugins/summernote/summernote-zh-CN.js"></script>
+<script src="__static__/plugins/layui/layui.js"></script>
+
+<script>
+
+    var edit=function(){
+        $("#eg").addClass("no-padding");
+        $(".click2edit").summernote({lang:"zh-CN",focus:true})
+    };
+
+    var save=function(){
+        $("#eg").removeClass("no-padding");
+        var aHTML=$(".click2edit").code();
+        $(".click2edit").destroy()
+    };
+
+    Dropzone.autoDiscover = false;
+    var thumbImageDict = new Array();
+    var uploadedFileCount=0;
+
+    $(document).ready(function(){
+        $(".summernote").summernote({lang:"zh-CN"});
+        $(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});
+
+
+        $("#mydropzone").dropzone({
+            url:"{:url('admin/product/upload')}",
+            paramName: "file",
+            maxFilesize: 3, // MB
+            acceptedFiles: ".jpg,.png,.gif",
+//            autoProcessQueue:false,
+            uploadMultiple:false,
+            parallelUploads:100,
+            maxFiles:4,
+            addRemoveLinks: true,
+            dictRemoveFile: "移除",
+            init:function(){
+                this.on("success",function(files,response){
+                    console.log("success", response);
+                    thumbImageDict[uploadedFileCount] = response.fileName;
+                    uploadedFileCount++;
+                    console.log("thumbImageDict", thumbImageDict);
+
+                });
+                this.on("complete",function(files,response){
+                    console.log("complete", response);
+                });
+
+                this.on("error",function(files,response){
+                    console.log("error", response);
+                });
+                
+                this.on("removedfile", function(files, response) {
+                    console.log("removedfile", files);
+                    uploadedFileCount--;
+                });
+
+            }
+
+        });
+
+        //getCategoryData
+        var xmlhttp =new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                console.log("xmlhttp.responseText", xmlhttp.responseText);
+                var res = JSON.parse(xmlhttp.responseText);
+
+                console.log("res.", res);
+                var categorySelect=document.getElementById('category');
+                categorySelect.options.length=0;
+                for (obj in res) {
+                    console.log("value.", res[obj]);
+                    var value = res[obj];
+                    categorySelect.options.add(new Option(value.name, value.id));
+                }
+
+            }
+        }
+        var random = Math.random();
+        xmlhttp.open("GET","{:url('admin/category/getcategory')}",true);
+        xmlhttp.send();
+    });
+
+    //保存商品信息到数据库
+    var saveProduct = function () {
+        //alert("saveData");
+        var form = new FormData(document.getElementById("product-form"));
+        var i = 1;
+        for ( x in thumbImageDict) {
+            var paramNmae = "thumb_"+ i.toString();
+            form.append(paramNmae, thumbImageDict[x]);
+            i++;
+        }
+
+        form.append("description", document.getElementById("product-description").innerHTML);
+        var xmlhttp =new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                console.log("xmlhttp.responseText", xmlhttp.responseText);
+                var res = JSON.parse(xmlhttp.responseText);
+                if (res.code == 1) {
+                    layui.use('layer', function(){
+                        var layer = layui.layer
+                        layer.msg('添加成功');
+                        $("#roleForm").resetForm();
+                    });
+                }else {
+                    layui.use('layer', function(){
+                        var layer = layui.layer
+                        layer.msg('添加失败');
+                    });
+                }
+            }
+        }
+        xmlhttp.open("POST","{:url('admin/product/add')}",true);
+        xmlhttp.send(form);
+    }
+
+
+
+
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+</body>
+
+</html>
