@@ -59,6 +59,7 @@
                             <th>商品简介</th>
                             <th>原价</th>
                             <th>折扣价</th>
+                            <th>商品分类</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -71,6 +72,8 @@
                             <td>{$product.small_text}</td>
                             <td class="center">{$product.original_price}</td>
                             <td class="center">{$product.deducted_price}</td>
+                            <td class="center">{$product.category.name}</td>
+
                             <td>
                                 <button class="btn btn-white btn-bitbucket" type="button"><i class="fa fa-pencil-square-o"></i></button>
                                 <button class="btn btn-white btn-bitbucket" type="button"><i class="fa fa-trash-o"></i></button>
@@ -86,6 +89,7 @@
                             <th>商品简介</th>
                             <th>原价</th>
                             <th>折扣价</th>
+                            <th>商品分类</th>
                             <th>操作</th>
                         </tr>
                         </tfoot>

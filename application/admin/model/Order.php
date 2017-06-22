@@ -16,4 +16,14 @@ class Order extends Model
     protected $type       = [
         'create_time' => 'timestamp:Y-m-d H:i:s',
     ];
+
+
+    public function address()
+    {
+        return $this->belongsTo('Address');
+    }
+
+    public function user() {
+        return $this->belongsTo('User');
+    }
 }

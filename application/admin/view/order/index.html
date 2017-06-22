@@ -58,9 +58,10 @@
                             <th>订单号</th>
                             <th>订单状态</th>
                             <th>总价</th>
-                            <th>客户id</th>
+                            <th>客户名</th>
                             <th>快递名称</th>
                             <th>快递单号</th>
+                            <th>收件地址</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>
@@ -73,9 +74,10 @@
                             <td>{$order.order_code}</td>
                             <td>{$order.state}</td>
                             <td>{$order.total_price}</td>
-                            <td>{$order.user_id}</td>
+                            <td>{$order.user.name}</td>
                             <td>{$order.express}</td>
                             <td>{$order.express_code}</td>
+                            <td>{$order.address.detail}</td>
                             <td>{$order.create_time}</td>
                             <td>
                                 <button class="btn btn-white btn-bitbucket" type="button"><i class="fa fa-pencil-square-o"></i></button>
@@ -91,9 +93,10 @@
                             <th>订单号</th>
                             <th>订单状态</th>
                             <th>总价</th>
-                            <th>客户id</th>
+                            <th>客户名</th>
                             <th>快递名称</th>
                             <th>快递单号</th>
+                            <th>收件地址</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>

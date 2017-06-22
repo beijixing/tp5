@@ -284,7 +284,7 @@
         var email = $(item).parents("tr").find('td:nth-child(5)').text();
         var sex = $(item).parents("tr").find('td:nth-child(6)').text();
         var roleName = $(item).parents("tr").find('td:nth-child(7)').text();
-
+        console.log('roleName= '+roleName);
 
         $('#edituserId').val(itemId);
         $('#editcname').val(cname);
@@ -319,15 +319,19 @@
             success : function (result) {
                 console.log(result)
                 var res = JSON.parse(result);
-
                 var roleSelect=document.getElementById('editRoleSelect');
                 roleSelect.options.length=0;
+                var selectedRoleVal;
                 for (obj in res) {
                     var value = res[obj];
                     console.log("value.", res);
                     roleSelect.options.add(new Option(value.name, value.id));
+                    if ( $.trim(value.name) == $.trim(roleName) ){
+                        selectedRoleVal = value.id
+                    }
                 }
-                $('#editRoleSelect').find("option[text='" + roleName + "']").attr("selected",true);
+
+                $('#editRoleSelect').val(selectedRoleVal);
 
             },
         });
