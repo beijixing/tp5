@@ -2,11 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: zgl
- * Date: 2017/6/15
- * Time: 下午10:12
+ * Date: 2017/6/23
+ * Time: 下午8:23
  */
 
-namespace app\admin\model;
+namespace app\appService\model;
+
 
 use \think\Model;
 class Order extends Model
@@ -24,5 +25,9 @@ class Order extends Model
 
     public function user() {
         return $this->belongsTo('User');
+    }
+
+    public function orderItems() {
+        return $this->belongsToMany('Product', 'order_has_product');
     }
 }
