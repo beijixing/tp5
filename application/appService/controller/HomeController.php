@@ -33,7 +33,8 @@ class HomeController extends Controller
         for ($i= 0;$i< count($list); $i++){
             $product = $list[$i];
             $baner[$i] = ['banner_id' => $product->id,
-                'banner_thumb' => $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$product->thumb_1];
+                'banner_thumb' => $product->thumb_1];
+
         }
 
         //获取类别
