@@ -55,4 +55,25 @@ class UserController extends Controller
 
     }
 
+    public function userTest(Request $request) {
+
+        return json_encode(['code'=> '1', 'data'=>$request->param(), 'method'=>$request->method()]);
+    }
+
+    public function upload(Request $request) {
+
+        $file = $request->file('file');
+
+        $info = $file->move(ROOT_PATH.'public'.DS.'uploads');
+        if ($info) {
+            //成功上传图片
+            $filePath = $request->domain().dirname($_SERVER['SCRIPT_NAME']).'/public/uploads'.$info->getSaveName();
+            return json(['fileName' => $filePath ]);
+//            echo $info->getSaveName();
+//            echo $info->getFilename();
+        }else {
+            return json( ['error' => $info->getError() ]);
+        }
+    }
+
 }
