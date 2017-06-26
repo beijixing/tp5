@@ -37,7 +37,7 @@ class ProductController
      * 根据参数:product_id 获取相应产品的详细信息
      * */
     public function detail(Request $request) {
-        $product = Product::get(['product_id' => $request->param('product_id')]);
+        $product = Product::get(['id' => $request->param('product_id')]);
         if ($product) {
             return json_encode([
                 'code' => 1,

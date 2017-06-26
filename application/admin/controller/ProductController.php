@@ -41,9 +41,10 @@ class ProductController extends Controller
         $info = $file->move(ROOT_PATH.'public'.DS.'uploads');
         if ($info) {
             //成功上传图片
-              return json(['fileName' => $info->getSaveName() ]);
-//            echo $info->getSaveName();
-//            echo $info->getFilename();
+            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$info->getSaveName();
+            return json(['fileName' => $fileAbsolutePath]);
+//           echo $info->getSaveName();
+//           echo $info->getFilename();
         }else {
             return json( ['error' => $info->getError() ]);
         }

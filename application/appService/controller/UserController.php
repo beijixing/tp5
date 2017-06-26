@@ -76,7 +76,12 @@ class UserController
         }
     }
 
-    public function login(Request $request) {
+    public function onLogin(Request $request) {
         //查询user是否存在,不存在则登录成功后添加用户到数据库
+    }
+
+
+    public function add(Request $request) {
+        
     }
 }
