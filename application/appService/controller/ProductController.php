@@ -38,6 +38,7 @@ class ProductController
      * */
     public function detail(Request $request) {
         $product = Product::get(['id' => $request->param('product_id')]);
+
         if ($product) {
             return json_encode([
                 'code' => 1,

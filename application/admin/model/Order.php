@@ -17,7 +17,6 @@ class Order extends Model
         'create_time' => 'timestamp:Y-m-d H:i:s',
     ];
 
-
     public function address()
     {
         return $this->belongsTo('Address');

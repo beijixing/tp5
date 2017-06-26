@@ -34,6 +34,7 @@ class HomeController extends Controller
             $product = $list[$i];
             $baner[$i] = ['banner_id' => $product->id,
                 'banner_thumb' => $product->thumb_1];
+
         }
 
         //获取类别
