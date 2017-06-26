@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cdde6b4-b6f0-4150-ab42-44e6754de990" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/.gitignore" afterPath="$PROJECT_DIR$/public/static/.gitignore" />
     </list>
@@ -97,17 +96,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/static/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+            <state relative-caret-position="0">
+              <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/uploads/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
@@ -191,8 +190,8 @@
         <option value="$PROJECT_DIR$/application/appService/controller/UserController.php" />
         <option value="$PROJECT_DIR$/application/admin/view/product/add.html" />
         <option value="$PROJECT_DIR$/application/admin/view/category/index.html" />
-        <option value="$PROJECT_DIR$/public/static/.gitignore" />
         <option value="$PROJECT_DIR$/public/uploads/.gitignore" />
+        <option value="$PROJECT_DIR$/public/static/.gitignore" />
       </list>
     </option>
   </component>
@@ -563,12 +562,12 @@
       <workItem from="1498097883447" duration="2196000" />
       <workItem from="1498182999854" duration="2742000" />
       <workItem from="1498439482512" duration="9611000" />
-      <workItem from="1498469983334" duration="118000" />
+      <workItem from="1498469983334" duration="200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196141000" />
+    <option name="totallyTimeSpent" value="196223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="29" width="1398" height="778" extended-state="0" />
@@ -907,7 +906,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/static/.gitignore">
+    <entry file="file://$PROJECT_DIR$/public/uploads/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
@@ -915,10 +914,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/.gitignore">
+    <entry file="file://$PROJECT_DIR$/public/static/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
           <folding />
         </state>
       </provider>
