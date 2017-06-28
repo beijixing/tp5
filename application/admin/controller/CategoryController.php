@@ -42,6 +42,7 @@ class CategoryController extends Controller
         $categoryId = $request->param("id");
         $category = Category::get($categoryId);
         $category->name = $request->param("name");
+        $category->icon = $request->param("icon");
         $category->small_text = $request->param("small_text");
         $result = $category->save();
         return json(["code" => $result]);

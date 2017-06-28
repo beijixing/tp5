@@ -53,7 +53,6 @@ class HomeController extends Controller
                 'goods_list' => $productList
             ]
         ];
-
         return json_encode($resultData);
     }
 }

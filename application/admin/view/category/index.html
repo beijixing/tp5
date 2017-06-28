@@ -51,6 +51,7 @@
                             <th>序号</th>
                             <th>分类名称</th>
                             <th>说明</th>
+                            <th>icon</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>
@@ -63,6 +64,7 @@
                             <td>{++$myorder}</td>
                             <td>{$category.name}</td>
                             <td>{$category.small_text}</td>
+                            <th><img src={$category.icon} alt="icon", width="40px", height="40px"></th>
                             <td>{$category.create_time}</td>
                             <td>
                                 <button class="btn btn-white btn-bitbucket" type="button" onclick="editCategory(this)"><i class="fa fa-pencil-square-o"></i></button>
@@ -78,6 +80,7 @@
                             <th>序号</th>
                             <th>分类名称</th>
                             <th>说明</th>
+                            <th>icon</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>
@@ -136,6 +139,20 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label">icon:</label>
+            <input id="editicon" name="icon" type="text" class="hidden">
+            <div class="col-sm-8" style="height: 240px; overflow: hidden;">
+                <!--<input type="text" class="form-control">-->
+                <div id="editmydropzone" class="dropzone">
+                    <div class="dropzone-previews" id="edit-dropzone-preview">
+                        <div class="dz-message">
+                            点击或者拖拽图片来上传
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-3 control-label">说明：</label>
             <div class="col-sm-8">
                 <textarea id="editccomment" name="small_text" class="form-control" required="" aria-required="true"></textarea>
@@ -168,7 +185,7 @@
 <script>
     var addCategorySuccess = false;
     var updateCategorySuccess = false;
-
+    var uploadedImagePath = "";
     var editLayer;
 
     //添加类别
@@ -201,6 +218,7 @@
         var itemId = $(item).parents("tr").find('td:nth-child(1)').text();
         var cname = $(item).parents("tr").find('td:nth-child(3)').text();
         var ccomment = $(item).parents("tr").find('td:nth-child(4)').text();
+        var icon = $(item).parents("tr").find('img:nth-child(1)').attr('src');
 
 //        alert("hello wolrd"+text+text1+text2);
         $('#editId').val(itemId);
@@ -212,7 +230,7 @@
             editLayer.open({
                 type: 1,
                 skin: 'layui-layer-rim', //加上边框
-                area: ['420px', '300px'], //宽高
+                area: ['420px', '400px'], //宽高
                 content: $('#edit-category'),
                 success: function(layero, index){
                     $('#edit-category').removeClass('hidden');
@@ -226,6 +244,48 @@
                 }
             });
         });
+
+       var editDropzone = new Dropzone("#editmydropzone",{
+            url:"{:url('admin/product/upload')}",
+            paramName: "file",
+            maxFilesize: 3, // MB
+            acceptedFiles: ".jpg,.png,.gif",
+//            autoProcessQueue:false,
+            uploadMultiple:false,
+            thumbnailWidth: 80,
+            thumbnailHeight: 80,
+            maxFiles:1,
+            addRemoveLinks: true,
+            dictRemoveFile: "移除",
+            previewsContainer: "#edit-dropzone-preview",
+            dictMaxFilesExceeded: "只能上传一张图片",
+            init:function(){
+                this.on("success",function(files,response){
+                    console.log("success", response);
+                    uploadedImagePath = response.fileName;
+                    $("#editicon").val(uploadedImagePath);
+                });
+                this.on("complete",function(files,response){
+                    console.log("complete", response);
+                });
+
+                this.on("error",function(files,response){
+                    console.log("error", response);
+                });
+
+                this.on("removedfile", function(files, response) {
+                    console.log("removedfile", files);
+                    uploadedImagePath = ""
+                });
+            }
+
+        });
+
+        console.log(icon);
+        var mockFile = { name: "icon", accepted:true };
+        editDropzone.emit("addedfile", mockFile);
+        editDropzone.emit("thumbnail", mockFile, icon);
+//        editDropzone.emit("complete", mockFile);
     }
 
     //删除类别
@@ -296,7 +356,6 @@
             }
         });
 
-        var uploadedImagePath = ""
         $("#categoryForm").ajaxForm(function(result){
             if(result.code == 1) {
                 addCategorySuccess = true;
