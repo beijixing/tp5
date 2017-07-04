@@ -28,7 +28,11 @@ class CartController extends Controller
                 'data' => $userCart
             ]);
         }else {
-
+            return json_encode([
+                'code' => 0,
+                'message' => 'ok',
+                'data' => '获取购物车数据失败'
+            ]);
         }
     }
     /*
@@ -49,7 +53,7 @@ class CartController extends Controller
     }
 
     /*
-     * 向用户的购物车中添加商品
+     * 删除用户购物车中的商品
      * 参数: user_id, 用户id
      * 参数: product_id,商品id
      * */

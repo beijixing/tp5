@@ -78,6 +78,9 @@ class UserController
 
     public function onLogin(Request $request) {
         //查询user是否存在,不存在则登录成功后添加用户到数据库
+        //用code 换取 session_key
+        //返回自己服务端生成的session
+
     }
 
 
