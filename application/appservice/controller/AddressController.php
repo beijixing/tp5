@@ -6,9 +6,9 @@
  * Time: 上午11:08
  */
 
-namespace app\appService\controller;
+namespace app\appservice\controller;
 
-use app\appService\model\Address;
+use app\appservice\model\Address;
 use think\Controller;
 use think\Request;
 

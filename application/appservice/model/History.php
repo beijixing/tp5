@@ -6,7 +6,7 @@
  * Time: 下午8:26
  */
 
-namespace app\appService\model;
+namespace app\appservice\model;
 
 use think\Model;
 

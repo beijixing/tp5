@@ -6,12 +6,12 @@
  * Time: 下午8:10
  */
 
-namespace app\appService\controller;
+namespace app\appservice\controller;
 
 
 use think\Request;
-use app\appService\model\Address;
-use app\appService\model\Order;
+use app\appservice\model\Address;
+use app\appservice\model\Order;
 
 class UserController
 {

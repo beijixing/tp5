@@ -6,10 +6,10 @@
  * Time: 上午9:29
  */
 
-namespace app\appService\controller;
+namespace app\appservice\controller;
 
 
-use app\appService\model\Product;
+use app\appservice\model\Product;
 use think\Request;
 
 class ProductController

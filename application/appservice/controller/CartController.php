@@ -6,11 +6,11 @@
  * Time: 下午8:09
  */
 
-namespace app\appService\controller;
+namespace app\appservice\controller;
 
 use \think\Controller;
 use \think\Request;
-use app\appService\model\Cart;
+use app\appservice\model\Cart;
 
 class CartController extends Controller
 {

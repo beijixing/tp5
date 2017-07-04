@@ -6,11 +6,11 @@
  * Time: 上午10:29
  */
 
-namespace app\appService\controller;
+namespace app\appservice\controller;
 
 
-use app\appService\model\Order;
-use app\appService\model\OrderItems;
+use app\appservice\model\Order;
+use app\appservice\model\OrderItems;
 use think\Request;
 
 class OrderController

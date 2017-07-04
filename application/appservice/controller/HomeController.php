@@ -12,8 +12,8 @@ namespace app\appservice\controller;
 use phpDocumentor\Reflection\Types\Array_;
 use think\Controller;
 use think\Request;
-use app\appService\model\Product;
-use app\appService\model\Category;
+use app\appservice\model\Product;
+use app\appservice\model\Category;
 
 class HomeController extends Controller
 {
