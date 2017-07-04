@@ -6,7 +6,7 @@
  * Time: 下午8:08
  */
 
-namespace app\appService\controller;
+namespace app\appservice\controller;
 
 
 use phpDocumentor\Reflection\Types\Array_;

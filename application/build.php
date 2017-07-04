@@ -14,7 +14,7 @@ return [
     '__file__' => ['common.php', 'config.php', 'database.php'],
 
     // 定义demo模块的自动生成 （按照实际定义的文件名生成）
-    'appService'     => [
+    'appservice'     => [
         '__file__'   => ['common.php'],
         '__dir__'    => ['controller', 'model', 'view'],
         'controller' => ['UserController','HomeController', 'CartController'],
