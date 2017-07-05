@@ -5,6 +5,7 @@ return [
     'prefix'         => 'appservice',
     'type'           => '',
     'auto_start'     => true,
+    'expire'         => 7200,
 ],
 
 ];

@@ -9,9 +9,13 @@
 namespace app\appservice\controller;
 
 
+use app\appservice\model\User;
 use think\Request;
+use lib\HTTPHelper;
+use lib\Util;
 use app\appservice\model\Address;
 use app\appservice\model\Order;
+use think\Session;
 
 class UserController
 {
@@ -80,39 +84,38 @@ class UserController
         //查询user是否存在,不存在则登录成功后添加用户到数据库
         //用code 换取 session_key
         //返回自己服务端生成的session
+        $url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wx8b936b48606379ad&secret=3499f32931d4a82056de9bc6a9fad2d3&js_code='.
+            $request->param('code').'&grant_type=authorization_code';
+
+        $httpHelper = new HTTPHelper();
+        $result = $httpHelper->HttpGet($url);
+        $jsonRes = json_decode($result);
+        $thirdSession = Util::random_16();
+        Session::set($thirdSession, $result);
+
+        return json_encode(["code"=>1, "message"=>"ok", "data"=> ["thirdSession"=> $thirdSession, "identifier"=>$jsonRes->openid] ]);
 
     }
 
-    public function HttpGet($url){
-        $curl = curl_init ();
-        curl_setopt ( $curl, CURLOPT_URL, $url );
-        curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, true );
-          // curl_setopt ( $curl, CURLOPT_TIMEOUT, 500 );
-          // curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36');
 
-         //如果用的协议是https则打开鞋面这个注释
-        curl_setopt ( $curl, CURLOPT_SSL_VERIFYPEER, false );
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    public function addUser(Request $request) {
+        $thirdSession = $request->param("thirdSession");
+        if (Session::has($thirdSession)) {
+            $user = new User();
+            $user["name"] = $request->param("nickname");
+            $user["identifier"] = $request->param("identifier");
+            $user["header_icon"] = $request->param("icon");
+            $user["user_role_id"] = 2;
 
-         $res = curl_exec ( $curl );
-         curl_close ( $curl );
-         return $res;
-     }
+            if ($user->save()) {
+                return json_encode(["code" => 1, "message"=>"添加成功"]);
+            }else {
+                return json_encode(["code" => 0, "message"=>"添加失败"]);
 
+            }
 
-    public function add(Request $request) {
-        $pr_bits = '';
-        // Unix/Linux platform?
-        $fp = @fopen('/dev/urandom','rb');
-        if ($fp) {
-            $pr_bits .= @fread($fp,16);
-            @fclose($fp);
+        }else {
+            return json_encode(["code" => 0, "message"=>"请重新登录"]);
         }
-
-        if ($pr_bits) {
-            $pr_bits = md5($pr_bits);
-        }
-
-        return json_encode(["random" => $pr_bits ]);
     }
 }
