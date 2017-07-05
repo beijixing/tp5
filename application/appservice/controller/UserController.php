@@ -104,16 +104,15 @@ class UserController
         $pr_bits = '';
         // Unix/Linux platform?
         $fp = @fopen('/dev/urandom','rb');
-        if ($fp !== FALSE) {
+        if ($fp) {
             $pr_bits .= @fread($fp,16);
             @fclose($fp);
         }
 
         if ($pr_bits) {
-            $pr_bits = md5($pr_bits,TRUE);
+            $pr_bits = md5($pr_bits);
         }
 
-
-        return json_encode(["random" => $pr_bits]);
+        return json_encode(["random" => $pr_bits ]);
     }
 }
