@@ -3,11 +3,11 @@ namespace app\admin\controller;
 use \think\Controller;
 use app\admin\model\User;
 use think\Request;
+use think\Session;
 
 class LoginController extends Controller
 {
    public function index() {
-
        return $this->fetch();
    }
 
@@ -32,6 +32,8 @@ class LoginController extends Controller
           if ($remember == 1) {
               //记住密码
           }
+
+          Session::set('username', $username);
           $this->redirect(url('admin/index/index'));
       }else{
           //登录失败

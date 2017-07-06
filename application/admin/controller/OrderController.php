@@ -9,7 +9,7 @@
 namespace app\admin\controller;
 use \think\Controller;
 use app\admin\model\Order;
-class OrderController extends Controller
+class OrderController extends BaseController
 {
     //已完成订单
     public function finished() {

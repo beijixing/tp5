@@ -10,7 +10,7 @@ namespace app\admin\controller;
 
 use \think\Controller;
 
-class ConfigureController extends Controller
+class ConfigureController extends BaseController
 {
     public function getUserNotes() {
         return $this->fetch('configure/userNotes');
