@@ -11,7 +11,7 @@ use \think\Controller;
 use app\admin\model\Role;
 use think\Request;
 
-class RoleController extends Controller
+class RoleController extends BaseController
 {
     public function index () {
         $roleList = Role::all();

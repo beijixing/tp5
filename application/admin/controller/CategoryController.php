@@ -12,7 +12,7 @@ use \think\Controller;
 use app\admin\model\Category;
 use think\Request;
 
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     public function index() {
         $categoryList = Category::all();

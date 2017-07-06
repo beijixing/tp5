@@ -5,7 +5,7 @@ use \think\Controller;
 use app\admin\model\User;
 use \think\Request;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     public function index() {
         //普通用户
