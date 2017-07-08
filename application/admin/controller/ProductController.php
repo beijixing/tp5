@@ -38,8 +38,8 @@ class ProductController extends BaseController
 
     public function upload() {
 
-        $data = array($_FILES);
-        $file= $data['file'];
+        $data = array($_FILES['file']);
+        $file= $data;
         $name = $file['name'];
         $tmpName = $file['tmp_name'];
         $error = $file['error'];
