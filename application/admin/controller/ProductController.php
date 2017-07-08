@@ -1,10 +1,11 @@
 <?php
 namespace app\admin\controller;
+
 use \think\Controller;
 use think\Request;
 use app\admin\model\Product;
 
-class ProductController
+class ProductController extends BaseController
 {
     //获取商品列表
     public function index() {
@@ -37,8 +38,8 @@ class ProductController
 
     public function upload() {
 
-
-        $file= $_FILES['file'];
+        $data = array($_FILES);
+        $file= $data['file'];
         $name = $file['name'];
         $tmpName = $file['tmp_name'];
         $error = $file['error'];
