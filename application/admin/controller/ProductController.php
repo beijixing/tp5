@@ -49,19 +49,19 @@ class ProductController extends BaseController
 //            return json( ['error' => $info->getError() ]);
 //        }
 
-        return json( ['files' => $_FILES]);
-//        $file = $_FILES;
-//        $path = ROOT_PATH.'public'.DS.'uploads/';
-//        $msg = $this->nFileUpload($file, $path);
-//
-//        if ($msg['statusCode'] == 0) {
-//            return json( ['error' => $msg['message'] ]);
-//        }else {
-//
-//            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$msg['dst'];
-//
-//            return json( ['fileName' => $fileAbsolutePath]);
-//        }
+//        return json( ['files' => $_FILES]);
+        $files = $_FILES;
+        $path = ROOT_PATH.'public'.DS.'uploads/';
+        $msg = $this->nFileUpload($files, $path);
+
+        if ($msg['statusCode'] == 0) {
+            return json( ['error' => $msg['message'] ]);
+        }else {
+
+            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$msg['dst'];
+
+            return json( ['fileName' => $fileAbsolutePath]);
+        }
     }
 
     function nFileUpload($file, $path, $saveName = false){//函数会默认将同名文件覆盖
