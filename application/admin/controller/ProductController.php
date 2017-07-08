@@ -38,6 +38,8 @@ class ProductController extends BaseController
     public function upload() {
         $file = $_FILES['file'];
         $name = $file['name'];
+        $tmpName = $file['tmp_name'];
+        $error = $file['error'];
         $path = ROOT_PATH.'public'.DS.'uploads/';
 //        if($file['error']){//返回代码不为0是表示上传失败，为0则为成功
 //            $msg['statusCode'] = 0;
