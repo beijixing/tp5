@@ -4,7 +4,7 @@ use \think\Controller;
 use think\Request;
 use app\admin\model\Product;
 
-class ProductController extends BaseController
+class ProductController
 {
     //获取商品列表
     public function index() {
