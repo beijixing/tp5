@@ -50,19 +50,19 @@ class ProductController extends BaseController
 //        }
 
 
-        return json_encode(['files' => $_FILES, 'post'=> $request->post()]);
-//        $file = $_FILES;
-//        $path = ROOT_PATH.'public'.DS.'uploads/';
-//        $msg = nFileUpload($file, $path);
-//
-//        if ($msg['statusCode'] == 0) {
-//            return json( ['error' => $msg['message'] ]);
-//        }else {
-//
-//            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$msg['dst'];
-//
-//            return json( ['fileName' => $fileAbsolutePath]);
-//        }
+//        return json_encode(['files' => $_FILES, 'post'=> $request->post()]);
+        $file = $_FILES;
+        $path = ROOT_PATH.'public'.DS.'uploads/';
+        $msg = nFileUpload($file, $path);
+
+        if ($msg['statusCode'] == 0) {
+            return json( ['error' => $msg['message'] ]);
+        }else {
+
+            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$msg['dst'];
+
+            return json( ['fileName' => $fileAbsolutePath]);
+        }
     }
 
 }
