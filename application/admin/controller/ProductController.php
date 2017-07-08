@@ -49,7 +49,8 @@ class ProductController extends BaseController
 //            return json( ['error' => $info->getError() ]);
 //        }
 
-        return json( ['files' => $_FILES ,'file'=>$_FILES['file'], 'type'=>gettype($_FILES)]);
+        $file = $_FILES['file'];
+        return json( ['files' => $_FILES ,'file'=> $file, 'type'=>gettype($_FILES)]);
 
 
 //
