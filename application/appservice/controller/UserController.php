@@ -11,13 +11,11 @@ namespace app\appservice\controller;
 
 use app\appservice\model\User;
 use think\Request;
-use lib\HTTPHelper;
-use lib\Util;
+
 use app\appservice\model\Address;
 use app\appservice\model\Order;
-use think\Session;
 
-class UserController
+class UserController extends BaseController
 {
     /*
     * 根据user_id、state
@@ -80,42 +78,34 @@ class UserController
         }
     }
 
-    public function onLogin(Request $request) {
-        //查询user是否存在,不存在则登录成功后添加用户到数据库
-        //用code 换取 session_key
-        //返回自己服务端生成的session
-        $url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wx8b936b48606379ad&secret=3499f32931d4a82056de9bc6a9fad2d3&js_code='.
-            $request->param('code').'&grant_type=authorization_code';
-
-        $httpHelper = new HTTPHelper();
-        $result = $httpHelper->HttpGet($url);
-        $jsonRes = json_decode($result);
-        $thirdSession = Util::random_16();
-        Session::set($thirdSession, $result);
-
-        return json_encode(["code"=>1, "message"=>"ok", "data"=> ["thirdSession"=> $thirdSession, "identifier"=>$jsonRes->openid] ]);
-
-    }
-
-
     public function addUser(Request $request) {
-        $thirdSession = $request->param("thirdSession");
-        if (Session::has($thirdSession)) {
-            $user = new User();
-            $user["name"] = $request->param("nickname");
-            $user["identifier"] = $request->param("identifier");
-            $user["header_icon"] = $request->param("icon");
-            $user["user_role_id"] = 2;
-
-            if ($user->save()) {
-                return json_encode(["code" => 1, "message"=>"添加成功"]);
-            }else {
-                return json_encode(["code" => 0, "message"=>"添加失败"]);
-
+            if (!$this->isLogin()) {
+                return $this->unloginTip();
             }
 
-        }else {
-            return json_encode(["code" => 0, "message"=>"请重新登录"]);
-        }
+            $user = User::getByIdentifier($request->param("identifier"));
+            if ($user) {
+                $user["name"] = $request->param("nickname");
+                $user["header_icon"] = $request->param("icon");
+                if ($user->save()) {
+                    return json_encode(["code" => 1, "message"=>"更新成功"]);
+                }else {
+                    return json_encode(["code" => 0, "message"=>"更细失败"]);
+                }
+            }else {
+                $user = new User();
+                $user["name"] = $request->param("nickname");
+
+                $user["identifier"] = $request->param("identifier");
+                $user["header_icon"] = $request->param("icon");
+                $user["user_role_id"] = 2;
+
+                if ($user->save()) {
+                    return json_encode(["code" => 1, "message"=>"添加成功"]);
+                }else {
+                    return json_encode(["code" => 0, "message"=>"添加失败"]);
+                }
+            }
+
     }
 }
