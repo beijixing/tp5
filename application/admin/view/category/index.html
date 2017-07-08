@@ -247,6 +247,7 @@
 
        var editDropzone = new Dropzone("#editmydropzone",{
             url:"{:url('admin/product/upload')}",
+            method: 'POST',
             paramName: "file",
             maxFilesize: 3, // MB
             acceptedFiles: ".jpg,.png,.gif",
@@ -400,6 +401,7 @@
 
         $("#mydropzone").dropzone({
             url:"{:url('admin/product/upload')}",
+            method: 'POST',
             paramName: "file",
             maxFilesize: 1, // MB
             acceptedFiles: ".jpg,.png,.gif",
