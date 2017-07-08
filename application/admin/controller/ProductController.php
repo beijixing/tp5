@@ -37,16 +37,29 @@ class ProductController extends BaseController
 
     public function upload(Request $request) {
 
-        $file = $request->file('file');
-        $info = $file->move(ROOT_PATH.'public'.DS.'uploads');
-        if ($info) {
-            //成功上传图片
-            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$info->getSaveName();
-            return json(['fileName' => $fileAbsolutePath]);
-//           echo $info->getSaveName();
-//           echo $info->getFilename();
+//        $file = $request->file('file');
+//        $info = $file->move(ROOT_PATH.'public'.DS.'uploads');
+//        if ($info) {
+//            //成功上传图片
+//            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$info->getSaveName();
+//            return json(['fileName' => $fileAbsolutePath]);
+////           echo $info->getSaveName();
+////           echo $info->getFilename();
+//        }else {
+//            return json( ['error' => $info->getError() ]);
+//        }
+
+        $file = $_FILES;
+        $path = ROOT_PATH.'public'.DS.'uploads/';
+        $msg = nFileUpload($file, $path);
+
+        if ($msg['statusCode'] == 0) {
+            return json( ['error' => $msg['message'] ]);
         }else {
-            return json( ['error' => $info->getError() ]);
+
+            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$msg['dst'];
+
+            return json( ['fileName' => $fileAbsolutePath]);
         }
     }
 
