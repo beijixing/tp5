@@ -52,7 +52,7 @@ class ProductController extends BaseController
         $file = $_FILES['file'];
         $name = $file['name'];
         $path = ROOT_PATH.'public'.DS.'uploads/';
-//        return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
+        json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
 
         if($file['error']){//返回代码不为0是表示上传失败，为0则为成功
             $msg['statusCode'] = 0;
