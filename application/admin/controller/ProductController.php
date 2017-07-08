@@ -36,14 +36,14 @@ class ProductController extends BaseController
     }
 
 
-    public function upload() {
+    public function upload(Request $request) {
 
-        $data = array($_FILES['file']);
-        $file= $data;
-        $name = $file['name'];
-        $tmpName = $file['tmp_name'];
-        $error = $file['error'];
-        $path = ROOT_PATH.'public'.DS.'uploads/';
+//        $data = array($_FILES['file']);
+//        $file= $data;
+//        $name = $file['name'];
+//        $tmpName = $file['tmp_name'];
+//        $error = $file['error'];
+//        $path = ROOT_PATH.'public'.DS.'uploads/';
 
 //        if($error !=0 ){//返回代码不为0是表示上传失败，为0则为成功
 //            $msg['statusCode'] = 0;
@@ -53,7 +53,7 @@ class ProductController extends BaseController
 //            $msg['statusCode'] = 1;
 //            $msg['message'] = '上传文件成功！';
 //        }
-        return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
+        return json( ['files' => $_FILES ,'file'=> $request->file('file'), 'name'=>"name", 'type'=>gettype($_FILES)]);
 
     }
 
