@@ -35,20 +35,7 @@ class ProductController extends BaseController
     }
 
 
-    public function upload(Request $request) {
-
-//        $file = $request->file('file');
-//        $info = $file->move(ROOT_PATH.'public'.DS.'uploads');
-//        if ($info) {
-//            //成功上传图片
-//            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$info->getSaveName();
-//            return json(['fileName' => $fileAbsolutePath]);
-////           echo $info->getSaveName();
-////           echo $info->getFilename();
-//        }else {
-//            return json( ['error' => $info->getError() ]);
-//        }
-
+    public function upload() {
         $file = $_FILES['file'];
         $name = $file['name'];
         $path = ROOT_PATH.'public'.DS.'uploads/';
@@ -61,22 +48,7 @@ class ProductController extends BaseController
             $msg['message'] = '上传文件成功！';
         }
         return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
-
-//        if($file['error']){//返回代码不为0是表示上传失败，为0则为成功
-//            $msg['statusCode'] = 0;
-//            $msg['message'] = '上传文件失败！';
-//        }else{
-//            move_uploaded_file($file['tmp_name'], $path. $name);
-//            $msg['statusCode'] = 1;
-//            $msg['message'] = '上传文件成功！';
-//        }
-//
-//        if ($msg['statusCode'] == 0) {
-//            return json( ['error' => $msg['message'] ]);
-//        }else {
-//            $fileAbsolutePath = $request->domain(). dirname($_SERVER['SCRIPT_NAME']).'/public/uploads/'.$dst;
-//            return json( ['fileName' => $fileAbsolutePath]);
-//        }
+        
     }
 
 
