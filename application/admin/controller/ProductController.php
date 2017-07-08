@@ -49,7 +49,7 @@ class ProductController extends BaseController
             $msg['statusCode'] = 1;
             $msg['message'] = '上传文件成功！';
         }
-        return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
+//        return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
 
     }
 
