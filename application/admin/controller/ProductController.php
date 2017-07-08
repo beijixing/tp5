@@ -50,13 +50,16 @@ class ProductController extends BaseController
 //        }
 
 //        return json( ['files' => $_FILES]);
+
+
         $path = ROOT_PATH.'public'.DS.'uploads/';
-        $dst = $_FILES['file']['name'];
-        if($_FILES['file']['error']){//返回代码不为0是表示上传失败，为0则为成功
+        $file = $_FILES['file'];
+        $dst = $file['name'];
+        if($file['error']){//返回代码不为0是表示上传失败，为0则为成功
             $msg['statusCode'] = 0;
             $msg['message'] = '上传文件失败！';
         }else{
-            move_uploaded_file($_FILES['file']['tmp_name'], $path. $dst);
+            move_uploaded_file($file['tmp_name'], $path. $dst);
             $msg['statusCode'] = 1;
             $msg['message'] = '上传文件成功！';
         }
