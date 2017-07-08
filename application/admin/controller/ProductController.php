@@ -50,7 +50,8 @@ class ProductController extends BaseController
 //        }
 
         $file = $_FILES['file'];
-        return json( ['files' => $_FILES ,'file'=> $file, 'type'=>gettype($_FILES)]);
+        $name = $file['name'];
+        return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
 
 
 //
