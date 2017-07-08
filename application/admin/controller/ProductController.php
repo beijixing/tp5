@@ -50,9 +50,10 @@ class ProductController extends BaseController
 //        }
 
 
-        return json_encode(['files' => $_FILES, 'post'=> $request->post()]);
+        return json_encode(['files' => $_FILES['file'], 'post'=> $request->post()]);
+//        $file = $_FILES['files'];
 //        $path = ROOT_PATH.'public'.DS.'uploads/';
-//        $msg = nFileUpload($path);
+//        $msg = nFileUpload($file, $path);
 //
 //        if ($msg['statusCode'] == 0) {
 //            return json( ['error' => $msg['message'] ]);
