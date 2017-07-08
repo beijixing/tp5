@@ -43,16 +43,15 @@ class ProductController extends BaseController
         $tmpName = $file['tmp_name'];
         $error = $file['error'];
         $path = ROOT_PATH.'public'.DS.'uploads/';
-        echo  $tmpName;
-        echo  $error;
-//        if($error){//返回代码不为0是表示上传失败，为0则为成功
-//            $msg['statusCode'] = 0;
-//            $msg['message'] = '上传文件失败！';
-//        }else{
-//            move_uploaded_file($tmpName, $path. $name);
-//            $msg['statusCode'] = 1;
-//            $msg['message'] = '上传文件成功！';
-//        }
+
+        if($error !=0 ){//返回代码不为0是表示上传失败，为0则为成功
+            $msg['statusCode'] = 0;
+            $msg['message'] = '上传文件失败！';
+        }else{
+            move_uploaded_file($tmpName, $path. $name);
+            $msg['statusCode'] = 1;
+            $msg['message'] = '上传文件成功！';
+        }
         return json( ['files' => $_FILES ,'file'=> $file, 'name'=>$name, 'type'=>gettype($_FILES)]);
 
     }
