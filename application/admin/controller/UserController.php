@@ -39,6 +39,10 @@ class UserController extends BaseController
         $userId = $request->param("id");
         $user = User::get($userId);
         $user->name = $request->param("name");
+        $user->user_role_id = $request->param("user_role_id");
+        $user->phone = $request->param("phone");
+        $user->email = $request->param("email");
+        $user->sex = $request->param("sex");
         $result = $user->save();
         return json(["code" => $result]);
     }
