@@ -244,7 +244,7 @@
                     layui.use('layer', function(){
                         var layer = layui.layer
                         layer.msg('添加成功');
-                        $("#roleForm").resetForm();
+//                        $("#roleForm").resetForm();
                     });
                 }else {
                     layui.use('layer', function(){
@@ -257,10 +257,6 @@
         xmlhttp.open("POST","{:url('admin/product/add')}",true);
         xmlhttp.send(form);
     }
-
-
-
-
 </script>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
